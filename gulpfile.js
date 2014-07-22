@@ -84,6 +84,11 @@ gulp.task('default', ['clean'], function () {
     gulp.start('build');
 });
 
+gulp.task('deploy', ['build'], function () {
+    return gulp.src('./dist/**/*')
+        .pipe($.ghPages())
+});
+
 gulp.task('connect', function () {
     var connect = require('connect');
     var app = connect()
