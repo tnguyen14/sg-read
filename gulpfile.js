@@ -24,7 +24,7 @@ gulp.task('scripts', function () {
         .pipe($.size());
 });
 
-gulp.task('html', ['styles', 'scripts'], function () {
+gulp.task('html', ['styles', 'scripts', 'templates'], function () {
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
 
@@ -91,7 +91,7 @@ gulp.task('connect', function () {
         });
 });
 
-gulp.task('serve', ['connect', 'styles'], function () {
+gulp.task('serve', ['connect', 'styles', 'templates'], function () {
     require('opn')('http://localhost:9000');
 });
 
@@ -113,6 +113,16 @@ gulp.task('wiredep', function () {
         .pipe(gulp.dest('app'));
 });
 
+gulp.task('templates', function () {
+    return gulp.src('app/templates/**/*.hbs')
+        .pipe($.handlebars())
+        .pipe($.defineModule('plain'))
+        .pipe($.declare({
+            namespace: 'Templates'
+        }))
+        .pipe(gulp.dest('.tmp/templates'));
+});
+
 gulp.task('watch', ['connect', 'serve'], function () {
     var server = $.livereload();
 
@@ -121,6 +131,7 @@ gulp.task('watch', ['connect', 'serve'], function () {
     gulp.watch([
         'app/*.html',
         '.tmp/styles/**/*.css',
+        '.tmp/templates/**/*.js',
         'app/scripts/**/*.js',
         'app/images/**/*'
     ]).on('change', function (file) {
@@ -129,6 +140,7 @@ gulp.task('watch', ['connect', 'serve'], function () {
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
+    gulp.watch('app/templates/**/*.hbs', ['templates']);
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
 });
