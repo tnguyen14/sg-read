@@ -2,6 +2,7 @@
 // generated on 2014-07-22 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
+var bowerFiles = require('main-bower-files');
 var pkg = require('./package.json');
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -57,7 +58,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    return $.bowerFiles()
+    return gulp.src(bowerFiles())
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))

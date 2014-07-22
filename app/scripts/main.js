@@ -1,4 +1,4 @@
-/* global Templates */
+/* global Templates, _ */
 
 'use strict';
 
