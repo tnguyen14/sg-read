@@ -2,9 +2,10 @@
 // generated on 2014-07-22 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
-
+var pkg = require('./package.json');
 // load plugins
 var $ = require('gulp-load-plugins')();
+var config = pkg.config.build;
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.scss')
@@ -19,8 +20,10 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('app/scripts/**/*.js')
+        .pipe($.preprocess({context: config}))
         .pipe($.jshint())
         .pipe($.jshint.reporter(require('jshint-stylish')))
+        .pipe(gulp.dest('.tmp/scripts'))
         .pipe($.size());
 });
 
@@ -72,6 +75,11 @@ gulp.task('clean', function () {
 
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
+gulp.task('dev', function () {
+    config = pkg.config.dev;
+    gulp.start('watch');
+});
+
 gulp.task('default', ['clean'], function () {
     gulp.start('build');
 });
@@ -80,8 +88,8 @@ gulp.task('connect', function () {
     var connect = require('connect');
     var app = connect()
         .use(require('connect-livereload')({ port: 35729 }))
-        .use(connect.static('app'))
         .use(connect.static('.tmp'))
+        .use(connect.static('app'))
         .use(connect.directory('app'));
 
     require('http').createServer(app)
@@ -91,8 +99,8 @@ gulp.task('connect', function () {
         });
 });
 
-gulp.task('serve', ['connect', 'styles', 'templates'], function () {
-    require('opn')('http://localhost:9000');
+gulp.task('serve', ['connect', 'styles', 'templates', 'scripts'], function () {
+    // require('opn')('http://localhost:9000');
 });
 
 // inject bower components
