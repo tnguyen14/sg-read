@@ -31,18 +31,19 @@
             </div>
 
             <div class="jumbotron">
-                <form role="form">
+                <form role="form" class="form-horizontal">
                     <div class="form-group row">
                         <label for="url">A cool link you found?</label>
                         <div class="col-sm-12">
                             <input type="text" name="url" class="url form-control" placeholder="http://mynewwebsite.com"/>
                         </div>
                     </div>
+                    <div class="resource"></div>
                     <div class="form-group row">
-                        <div><label for="sharer">And you are </label></div>
-                        <div class="sharer-container col-sm-12">
+                        <div><label for="sharer">And which awesome SG Dev are you?</label></div>
+                        <div class="sharer-container col-sm-6">
                             <select name="sharer" class="form-control">
-                                <option value="">Awesome SG Dev</option>
+                                <option value=""></option>
                                 <option value="tnguyen">Tri</option>
                                 <option value="lgelberg">Larry</option>
                                 <option value="aclark">Alex</option>
@@ -57,8 +58,7 @@
             </div>
 
             <div class="row marketing">
-                <div class="col-lg-6 shared-articles">
-                </div>
+                <div class="col-lg-6 shared-articles"></div>
             </div>
 
             <div class="footer">
@@ -101,6 +101,7 @@
 
         <!-- build:js scripts/main.js -->
         <script src="templates/item.js"></script>
+        <script src="templates/resource.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
