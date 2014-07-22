@@ -5,12 +5,13 @@
 var url = '/* @echo url */' || 'http://localhost:3030';
 
 jQuery('document').ready( function ($) {
-    var template = Templates.item();
-    console.log(template);
+    var template = Templates.item;
     $.ajax({
         url: url,
-        success: function (data) {
-            console.log(data);
+        success: function (articles) {
+            _.each(articles, function (article) {
+                $('.shared-articles').append(template(article));
+            });
         }
     });
 });
