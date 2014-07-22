@@ -31,9 +31,28 @@
             </div>
 
             <div class="jumbotron">
-                <form class="form">
-                <label for="url">URL</label>
-                <input type="text" name="url" class="url" />
+                <form role="form">
+                    <div class="form-group row">
+                        <label for="url">A cool link you found?</label>
+                        <div class="col-sm-12">
+                            <input type="text" name="url" class="url form-control" placeholder="http://mynewwebsite.com"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div><label for="sharer">And you are </label></div>
+                        <div class="sharer-container col-sm-12">
+                            <select name="sharer" class="form-control">
+                                <option value="">Awesome SG Dev</option>
+                                <option value="tnguyen">Tri</option>
+                                <option value="lgelberg">Larry</option>
+                                <option value="aclark">Alex</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="sharer-name-container col-sm-6">
+                            <input type="text" class="form-control" name="sharer-name" class="sharer-name col-sm-4" placeholder="Your name"/>
+                        </div>
+                    </div>
                 </form>
             </div>
 

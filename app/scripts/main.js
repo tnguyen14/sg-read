@@ -14,4 +14,10 @@ jQuery('document').ready( function ($) {
             });
         }
     });
+    $('[name="sharer"]').on('change', function () {
+        if ($(this).val() === 'other') {
+            $('.sharer-container').removeClass('col-sm-12').addClass('col-sm-6');
+            $('.sharer-name-container').show();
+        }
+    });
 });
