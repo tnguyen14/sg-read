@@ -27,7 +27,7 @@ jQuery('document').ready( function ($) {
         url: serverUrl,
         success: function (articles) {
             _.each(articles, function (article) {
-                $('.shared-articles').append(itemTemplate(article));
+                $('.shared-items').append(itemTemplate(article));
             });
         }
     });
