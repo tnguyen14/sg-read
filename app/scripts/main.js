@@ -10,7 +10,7 @@ var sharers = [{
     email: 'tnguyen@demandware.com'
 }, {
     firstname: 'Larry',
-    lastname: "Gelberg",
+    lastname: 'Gelberg',
     email: 'lgelberg@demandware.com'
 }, {
     firstname: 'Alex',
@@ -47,6 +47,7 @@ jQuery('document').ready( function ($) {
         $.ajax({
             url: serverUrl + '/extract/' + encodeURIComponent(url),
             success: function (data) {
+                /*jshint camelcase: false */
                 $('.resource').html(resourceTemplate(data));
                 $(this).data('originalUrl', data.original_url);
                 $(this).val(data.url);
@@ -70,6 +71,7 @@ jQuery('document').ready( function ($) {
                 $('.shared-items').prepend(itemTemplate(data));
                 $(':input', $form).val('');
             }
+            // Handle error
         });
     });
 });
