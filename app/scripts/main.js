@@ -60,13 +60,15 @@ jQuery('document').ready( function ($) {
     // form submit
     $('#share-a-link').on('submit', function (e) {
         e.preventDefault();
-        var formData = $(e.target).serialize();
+        var $form = $(e.target),
+            formData = $form.serialize();
         $.ajax({
             url: serverUrl,
             type: 'POST',
             data: formData,
             success: function (data) {
-                console.log(data);
+                $('.shared-items').prepend(itemTemplate(data));
+                $(':input', $form).val('');
             }
         });
     });
