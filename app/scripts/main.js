@@ -30,8 +30,26 @@ jQuery('document').ready( function ($) {
         $.ajax({
             url: serverUrl + '/extract/' + encodeURIComponent(url),
             success: function (data) {
-                console.log(data);
                 $('.resource').html(resourceTemplate(data));
+                $(this).data('originalUrl', data.original_url);
+                $(this).val(data.url);
+            },
+            error: function (xhr, status, err) {
+                console.log(xhr);
+                console.log(err);
+            }
+        });
+    });
+    // form submit
+    $('#share-a-link').on('submit', function (e) {
+        e.preventDefault();
+        var formData = $(e.target).serialize();
+        $.ajax({
+            url: serverUrl,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                console.log(data);
             }
         });
     });
