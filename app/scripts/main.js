@@ -4,9 +4,25 @@
 
 var serverUrl = '/* @echo url */' || 'http://localhost:3030';
 
+var sharers = [{
+    firstname: 'Tri',
+    lastname: 'Nguyen',
+    email: 'tnguyen@demandware.com'
+}, {
+    firstname: 'Larry',
+    lastname: "Gelberg",
+    email: 'lgelberg@demandware.com'
+}, {
+    firstname: 'Alex',
+    lastname: 'Clark',
+    email: 'aclark@demandware.com'
+}];
+
 jQuery('document').ready( function ($) {
     var itemTemplate = Templates.item,
-        resourceTemplate = Templates.resource;
+        resourceTemplate = Templates.resource,
+        shareFormTemplate = Templates.shareform;
+    $('.share-container').html(shareFormTemplate(sharers));
     $.ajax({
         url: serverUrl,
         success: function (articles) {
@@ -17,8 +33,9 @@ jQuery('document').ready( function ($) {
     });
     $('[name="sharer"]').on('change', function () {
         if ($(this).val() === 'other') {
-            $('.sharer-container').removeClass('col-sm-6').addClass('col-sm-6');
-            $('.sharer-name-container').show();
+            $('.sharer-email-container').show();
+        } else {
+            $('.sharer-email-container').hide();
         }
     });
     $('[name="url"]').on('change', function () {
