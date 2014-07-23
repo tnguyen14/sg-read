@@ -65,6 +65,10 @@ body {
     .spinner {
         @include spinner($closeness: 8px, $length: 8);
     }
+    p {
+        padding: 15px;
+        font-size: 15px;
+    }
 }
 /* Supporting marketing content */
 .marketing {

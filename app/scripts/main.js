@@ -55,8 +55,8 @@ jQuery('document').ready( function ($) {
                 $(this).val(data.url);
             },
             error: function (xhr, status, err) {
-                console.log(xhr);
-                console.log(err);
+                $resource.html('<p class="bg-warning">Unable to get details for your URL. You can still go ahead and share it.</p>');
+                $resource.append(resourceTemplate());
             }
         });
     });
