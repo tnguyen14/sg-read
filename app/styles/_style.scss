@@ -60,6 +60,12 @@ body {
         }
     }
 }
+
+.resource {
+    .spinner {
+        @include spinner($closeness: 8px, $length: 8);
+    }
+}
 /* Supporting marketing content */
 .marketing {
     margin: 40px 0;

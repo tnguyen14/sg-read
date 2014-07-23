@@ -39,16 +39,18 @@ jQuery('document').ready( function ($) {
         }
     });
     $('[name="url"]').on('change', function () {
-        var url = $(this).val();
+        var url = $(this).val(),
+            $resource = $('.resource');
         if (url === '') {
             $('.resource').empty();
             return;
         }
+        $resource.html('<div class="spinner"></div>');
         $.ajax({
             url: serverUrl + '/extract/' + encodeURIComponent(url),
             success: function (data) {
                 /*jshint camelcase: false */
-                $('.resource').html(resourceTemplate(data));
+                $resource.html(resourceTemplate(data));
                 $(this).data('originalUrl', data.original_url);
                 $(this).val(data.url);
             },
