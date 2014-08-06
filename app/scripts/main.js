@@ -29,11 +29,14 @@ var sharers = [{
 jQuery('document').ready( function ($) {
     var itemTemplate = Templates.item,
         resourceTemplate = Templates.resource,
-        shareFormTemplate = Templates.shareform;
+        shareFormTemplate = Templates.shareform,
+        $sharedItems = $('.shared-items');
     $('.share-container').html(shareFormTemplate(sharers));
+    $sharedItems.html('<div class="spinner"></div>');
     $.ajax({
         url: serverUrl,
         success: function (articles) {
+            $sharedItems.empty();
             _.each(articles, function (article) {
                 $('.shared-items').append(itemTemplate(article));
             });
