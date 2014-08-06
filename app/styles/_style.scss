@@ -53,6 +53,9 @@ body {
 }
 
 .shared-items {
+    .spinner {
+        @include spinner($closeness: 8px, $length: 8);
+    }
     .item {
         border-top: 1px solid #e5e5e5;
         &:first-child {
