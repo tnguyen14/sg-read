@@ -1,4 +1,4 @@
-/* global Templates, _ */
+/* global Templates, _ , Handlebars, moment */
 
 'use strict';
 
@@ -25,6 +25,17 @@ var sharers = [{
     lastname: 'Pritchard',
     email: 'ppritchard@demandware.com'
 }];
+
+// Handlebars template helpers
+Handlebars.registerHelper('getDate', function (d, format) {
+    var date = moment(d),
+        today = moment();
+    if (date.diff(today, 'days') > 7) {
+        return 'on ' + date.format(format);
+    } else {
+        return date.fromNow();
+    }
+});
 
 jQuery('document').ready( function ($) {
     var itemTemplate = Templates.item,

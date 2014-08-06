@@ -62,6 +62,15 @@ body {
             border-top: none;
         }
     }
+    .share-info {
+        font-size: 0.9em;
+        .sharer {
+            font-style: italic;
+        }
+        .share-time {
+            font-weight: bold;
+        }
+    }
 }
 
 .resource {
