@@ -16,6 +16,14 @@ var sharers = [{
     firstname: 'Alex',
     lastname: 'Clark',
     email: 'aclark@demandware.com'
+}, {
+    firstname: 'Gilberte',
+    lastname: 'Houbart',
+    email: 'ghoubart@demandware.com'
+}, {
+    firstname: 'Peter',
+    lastname: 'Pritchard',
+    email: 'ppritchard@demandware.com'
 }];
 
 jQuery('document').ready( function ($) {
