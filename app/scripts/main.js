@@ -30,7 +30,7 @@ var sharers = [{
 Handlebars.registerHelper('getDate', function (d, format) {
     var date = moment(d),
         today = moment();
-    if (date.diff(today, 'days') > 7) {
+    if (today.diff(date, 'days') > 7) {
         return 'on ' + date.format(format);
     } else {
         return date.fromNow();
