@@ -24,6 +24,10 @@ var sharers = [{
     firstname: 'Peter',
     lastname: 'Pritchard',
     email: 'ppritchard@demandware.com'
+}, {
+    firstname: 'Aesh',
+    lastname: 'Verma',
+    email: 'averma@demandware.com'
 }];
 
 // Handlebars template helpers
