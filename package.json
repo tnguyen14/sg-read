@@ -37,7 +37,7 @@
   },
   "config": {
     "build": {
-      "url": "http://sg-read.herokuapp.com"
+      "url": "http://inspired-read.herokuapp.com"
     },
     "dev": {
       "url": "http://localhost:3030"

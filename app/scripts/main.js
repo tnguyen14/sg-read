@@ -49,7 +49,7 @@ jQuery('document').ready( function ($) {
     $('.share-container').html(shareFormTemplate(sharers));
     $sharedItems.html('<div class="spinner"></div>');
     $.ajax({
-        url: serverUrl,
+        url: serverUrl + '/sg/articles',
         success: function (articles) {
             $sharedItems.empty();
             _.each(articles, function (article) {
@@ -92,7 +92,7 @@ jQuery('document').ready( function ($) {
         var $form = $(e.target),
             formData = $form.serialize();
         $.ajax({
-            url: serverUrl,
+            url: serverUrl + '/sg',
             type: 'POST',
             data: formData,
             success: function (data) {
