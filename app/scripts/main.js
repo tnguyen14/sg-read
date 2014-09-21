@@ -92,7 +92,7 @@ jQuery('document').ready( function ($) {
         var $form = $(e.target),
             formData = $form.serialize();
         $.ajax({
-            url: serverUrl + '/sg',
+            url: serverUrl + '/sg/articles',
             type: 'POST',
             data: formData,
             success: function (data) {
