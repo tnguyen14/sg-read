@@ -64,7 +64,7 @@ jQuery('document').ready( function ($) {
             $('.sharer-email-container').hide();
         }
     });
-    $('[name="url"]').on('change', function () {
+    $('[name="link"]').on('change', function () {
         var url = $(this).val(),
             $resource = $('.resource');
         if (url === '') {
